@@ -2,6 +2,7 @@ class Node:
     def __init__(self, data):
         self.data = data
         self.next = None
+        self.prev = None
 
 
 class LinkedList:
@@ -13,16 +14,21 @@ class LinkedList:
         while cur.next is not None:
             cur = cur.next
         cur.next = Node(value)
+    #노드를 2개 잡는다
 
     def get_kth_node_from_last(self, k):
-        cur=self.head
-        count=0
-        cur = self.head
-        while cur.next is not None:
-            cur = cur.next
+        slow =self.head
+        fast=self.head
+
+        for i in range(k):
+            fast=fast.next
+
+        while fast is not None:
+            slow=slow.next
+            fast=fast.next
+        return slow
 
 
-        return self.head
 
 
 linked_list = LinkedList(6)
